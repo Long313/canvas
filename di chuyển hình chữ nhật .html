@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <canvas id="myCanvas" width="400" height="300" style="border:1px solid red"></canvas>
+  <script>
+    let canvas = document.getElementById('myCanvas');
+    let context = canvas.getContext('2d');
+    let rectangle = {
+      width : 100,
+      height : 50,
+      x : 0,
+      y : 0,
+      speed: 10
+    }
+    var dX = 5, dY = 5;
+
+
+    function drawRectangle(){
+      context.beginPath();
+      context.fillStyle="blue";
+      context.fillRect(rectangle.x,rectangle.y,rectangle.width,rectangle.height);
+      context.fill();
+      context.closePath();
+    }
+    function moveRectangle(){
+
+      if(rectangle.y > canvas.height - rectangle.height || rectangle.y < 0 ){
+        dY = -dY;
+      }
+      rectangle.y += dY;
+      }
+    // function moveLeftRight(){
+    //   if(rectangle.y >canvas.height - rectangle.height || rectangle.y <0 && rectangle.x ==0){
+    //     dX=-dX
+    //   }
+    //   rectangle.x +=dX;
+    // }
+    function draw(){
+      context.clearRect(0,0,canvas.width,canvas.height);
+      drawRectangle();
+      moveRectangle();
+      // moveLeftRight();
+      requestAnimationFrame(draw);
+    }
+    draw();
+  </script>
+</body>
+</html>

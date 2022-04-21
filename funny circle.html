@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <canvas
+      id="myCanvas"
+      width="500"
+      height="300"
+      style="border: 1px solid black"
+    ></canvas>
+    <script>
+      let myCanvas = document.getElementById("myCanvas");
+      let ctx = myCanvas.getContext("2d");
+      // ctx.beginPath();
+      // ctx.arc(300,250,50,0,Math.PI);
+      // ctx.stroke();
+      let x, y, r;
+      let centerX = 300;
+      let centerY = 250;
+    
+
+      for (let create = 0; create < 30; create++) {
+        let a = Math.floor(Math.random()*999999 + 100000);
+        let b = a.toString();
+          ctx.fillStyle = "#"+ b;
+          ctx.strokeStyle = "#" + b;
+        ctx.beginPath();
+        x = Math.floor(Math.random() * 600);
+        y = Math.floor(Math.random() * 500);
+        r = Math.floor(Math.random() * 100);
+        ctx.arc(x, y, r, 0, 2 * Math.PI);
+        ctx.fill();
+        ctx.stroke();
+      }
+    </script>
+  </body>
+</html>
